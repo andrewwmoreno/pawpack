@@ -41,7 +41,8 @@
     border-bottom:1px solid var(--hair);
   }
   .nav .brand{display:flex;align-items:center;gap:10px}
-  .nav .brand img{height:30px;width:auto}
+  .nav .brand img:first-child{height:34px;width:auto}
+  .nav .brand img:last-child{height:24px;width:auto}
   .nav ul{display:flex;gap:36px;list-style:none}
   .nav ul a{font-size:13px;font-weight:500;letter-spacing:.02em;position:relative;padding:6px 0}
   .nav ul a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
@@ -59,7 +60,7 @@
 
   .hero{
     position:relative;min-height:100vh;
-    padding:120px var(--gut) 80px;
+    padding:130px var(--gut) 80px;
     background:
       radial-gradient(1200px 600px at 80% 20%, rgba(30,58,95,.08), transparent 60%),
       var(--cream);
@@ -67,21 +68,21 @@
   }
   .hero-grid{
     max-width:var(--max);margin:0 auto;
-    display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:end;
+    display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:end;
   }
   .hero-brand-lockup{
     display:flex;
     align-items:center;
-    gap:18px;
-    margin-bottom:28px;
+    gap:22px;
+    margin-bottom:34px;
   }
   .hero-brand-lockup .mark{
-    width:72px;
-    height:72px;
+    width:96px;
+    height:96px;
     object-fit:contain;
   }
   .hero-brand-lockup .word{
-    height:44px;
+    height:62px;
     width:auto;
     object-fit:contain;
   }
@@ -97,36 +98,63 @@
     font-size:clamp(16px,1.3vw,19px);line-height:1.55;color:var(--mute);
   }
   .hero-visual{
-    position:relative;aspect-ratio:3/4;border-radius:4px;overflow:hidden;
+    position:relative;
+    aspect-ratio:3/4;
+    border-radius:4px;
+    overflow:hidden;
     background:var(--navy);
+    box-shadow:0 24px 60px -30px rgba(20,42,69,.35);
   }
-  .hero-art{width:100%;height:100%;display:block}
+  .hero-visual img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center center;
+  }
   .hero-meta{
     position:absolute;left:var(--gut);bottom:24px;right:var(--gut);
     display:flex;justify-content:space-between;align-items:flex-end;gap:20px;
-    pointer-events:none;
   }
   .hero-caption{
-    font-family:"Fraunces",serif;font-style:italic;font-size:18px;color:var(--mute);
+    font-family:"Fraunces",serif;font-style:italic;font-size:18px;color:rgba(237,234,216,.92);
     max-width:32ch;
+    text-shadow:0 2px 18px rgba(14,30,51,.35);
   }
   .hero-counter{
     text-align:right;
     font-family:"Fraunces",serif;
   }
-  .hero-counter .num{font-size:clamp(42px,5vw,72px);font-weight:600;color:var(--navy);letter-spacing:-.03em;display:block;line-height:1}
-  .hero-counter .cap{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);margin-top:8px;display:block}
+  .hero-counter .num{
+    font-size:clamp(42px,5vw,72px);
+    font-weight:600;
+    color:var(--cream);
+    letter-spacing:-.03em;
+    display:block;
+    line-height:1;
+    text-shadow:0 2px 18px rgba(14,30,51,.35);
+  }
+  .hero-counter .cap{
+    font-size:11px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:rgba(237,234,216,.85);
+    margin-top:8px;
+    display:block;
+    text-shadow:0 2px 18px rgba(14,30,51,.35);
+  }
+
   .scroll-cue{
     position:absolute;left:50%;bottom:18px;transform:translateX(-50%);
     font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute);
     display:flex;align-items:center;gap:10px;
   }
   .scroll-cue::before{content:"";width:40px;height:1px;background:var(--mute)}
+
   @media (max-width:900px){
     .hero-grid{grid-template-columns:1fr;gap:40px}
     .hero-visual{aspect-ratio:4/5}
-    .hero-brand-lockup .mark{width:58px;height:58px}
-    .hero-brand-lockup .word{height:34px}
+    .hero-brand-lockup .mark{width:78px;height:78px}
+    .hero-brand-lockup .word{height:48px}
   }
 
   .difference{
@@ -147,27 +175,6 @@
   .pillar p{font-size:13px;line-height:1.55;color:rgba(237,234,216,.7)}
   @media (max-width:1000px){.pillars{grid-template-columns:repeat(2,1fr)}}
   @media (max-width:560px){.pillars{grid-template-columns:1fr}.difference-head{grid-template-columns:1fr;gap:30px}}
-
-  .material{
-    padding:140px var(--gut);background:var(--cream);
-  }
-  .material-inner{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-  .material-copy .eyebrow{color:var(--rust)}
-  .material-copy h2{font-size:clamp(40px,5vw,72px);color:var(--navy);margin:20px 0 24px;letter-spacing:-.025em}
-  .material-copy p{font-size:17px;line-height:1.65;color:var(--mute);max-width:52ch}
-  .material-copy .cta{
-    margin-top:36px;display:inline-flex;align-items:center;gap:14px;
-    padding:14px 24px;border:1px solid var(--navy);border-radius:999px;
-    font-size:13px;font-weight:500;letter-spacing:.04em;color:var(--navy);
-    transition:all .3s ease;
-  }
-  .material-copy .cta:hover{background:var(--navy);color:var(--cream)}
-  .material-copy .cta svg{transition:transform .3s ease}
-  .material-copy .cta:hover svg{transform:translateX(4px)}
-  .material-visual{
-    aspect-ratio:4/5;background:var(--navy-deep);border-radius:4px;overflow:hidden;position:relative;
-  }
-  @media (max-width:900px){.material-inner{grid-template-columns:1fr;gap:40px}}
 
   .gear-mini{
     padding:120px var(--gut);
@@ -232,6 +239,28 @@
   @media (max-width:900px){
     .gear-grid{grid-template-columns:1fr}
   }
+
+  .material{
+    padding:140px var(--gut);background:var(--cream);
+  }
+  .material-inner{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  .material-copy .eyebrow{color:var(--rust)}
+  .material-copy h2{font-size:clamp(40px,5vw,72px);color:var(--navy);margin:20px 0 24px;letter-spacing:-.025em}
+  .material-copy p{font-size:17px;line-height:1.65;color:var(--mute);max-width:52ch}
+  .material-copy .cta{
+    margin-top:36px;display:inline-flex;align-items:center;gap:14px;
+    padding:14px 24px;border:1px solid var(--navy);border-radius:999px;
+    font-size:13px;font-weight:500;letter-spacing:.04em;color:var(--navy);
+    transition:all .3s ease;
+  }
+  .material-copy .cta:hover{background:var(--navy);color:var(--cream)}
+  .material-copy .cta svg{transition:transform .3s ease}
+  .material-copy .cta:hover svg{transform:translateX(4px)}
+
+  .material-visual{
+    aspect-ratio:4/5;background:var(--navy-deep);border-radius:4px;overflow:hidden;position:relative;
+  }
+  @media (max-width:900px){.material-inner{grid-template-columns:1fr;gap:40px}}
 
   .pawpals{
     padding:140px var(--gut);
@@ -489,7 +518,7 @@
 <nav class="nav">
   <a href="#top" class="brand">
     <img src="pawpack/assets/logo-mark.png" alt="PawPack logo mark" />
-    <img src="pawpack/assets/wordmark.png" alt="PawPack wordmark" style="height:22px" />
+    <img src="pawpack/assets/wordmark.png" alt="PawPack wordmark" />
   </a>
   <ul>
     <li><a href="#gear">The Gear</a></li>
@@ -505,8 +534,8 @@
   <div class="hero-grid">
     <div>
       <div class="hero-brand-lockup reveal">
-        <img class="mark" src="assets/logo-mark.png" alt="PawPack logo mark">
-        <img class="word" src="assets/wordmark.png" alt="PawPack wordmark">
+        <img class="mark" src="pawpack/assets/logo-mark.png" alt="PawPack logo mark">
+        <img class="word" src="pawpack/assets/wordmark.png" alt="PawPack wordmark">
       </div>
 
       <h1 class="display reveal">
@@ -520,48 +549,10 @@
       </p>
     </div>
 
-    <div class="hero-visual">
-      <svg class="hero-art" viewBox="0 0 600 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0" stop-color="#1E3A5F"/>
-            <stop offset=".55" stop-color="#142A45"/>
-            <stop offset="1" stop-color="#0E1E33"/>
-          </linearGradient>
-          <linearGradient id="rope" x1="0" x2="1" y1="0" y2="0">
-            <stop offset="0" stop-color="#C9A96A"/>
-            <stop offset=".5" stop-color="#E3DFC8"/>
-            <stop offset="1" stop-color="#B4593A"/>
-          </linearGradient>
-          <pattern id="weave" width="16" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(0)">
-            <path d="M0 4 Q 4 0, 8 4 T 16 4" stroke="#0E1E33" stroke-opacity=".25" fill="none" stroke-width="1.2"/>
-            <path d="M0 4 Q 4 8, 8 4 T 16 4" stroke="#EDEAD8" stroke-opacity=".35" fill="none" stroke-width="1.2"/>
-          </pattern>
-        </defs>
-        <rect width="600" height="800" fill="url(#sky)"/>
-        <path d="M0 560 L120 430 L210 500 L320 360 L430 460 L540 400 L600 440 L600 800 L0 800 Z" fill="#0E1E33" opacity=".85"/>
-        <path d="M0 620 L100 540 L200 590 L300 500 L420 580 L520 520 L600 560 L600 800 L0 800 Z" fill="#091526"/>
-        <circle cx="470" cy="170" r="44" fill="#EDEAD8" opacity=".9"/>
-        <circle cx="458" cy="162" r="44" fill="#1E3A5F"/>
-        <path d="M-20 250 C 120 200, 200 340, 310 300 S 520 220, 640 320"
-              stroke="url(#rope)" stroke-width="36" fill="none" stroke-linecap="round"/>
-        <path d="M-20 250 C 120 200, 200 340, 310 300 S 520 220, 640 320"
-              stroke="url(#weave)" stroke-width="36" fill="none" stroke-linecap="round"/>
-        <path d="M-20 680 C 160 640, 280 740, 400 700 S 580 660, 640 690"
-              stroke="#C9A96A" stroke-width="22" fill="none" stroke-linecap="round" opacity=".6"/>
-        <path d="M-20 680 C 160 640, 280 740, 400 700 S 580 660, 640 690"
-              stroke="url(#weave)" stroke-width="22" fill="none" stroke-linecap="round" opacity=".8"/>
-        <g transform="translate(80 80)" fill="#EDEAD8" opacity=".9">
-          <ellipse cx="20" cy="30" rx="7" ry="10"/>
-          <ellipse cx="38" cy="18" rx="7" ry="10"/>
-          <ellipse cx="58" cy="18" rx="7" ry="10"/>
-          <ellipse cx="76" cy="30" rx="7" ry="10"/>
-          <path d="M20 50 Q 20 70, 48 72 Q 76 70, 76 50 Q 76 36, 48 38 Q 20 36, 20 50 Z"/>
-        </g>
-      </svg>
-
+    <div class="hero-visual reveal">
+      <img src="pawpack/assets/pawpal-7.png" alt="PawPack adventure dog on the trail">
       <div class="hero-meta">
-        <div class="hero-caption">Rated 22 kN on the wall.<br/>Overbuilt for the trail.</div>
+        <div class="hero-caption">Trail-tested by dogs who actually go.</div>
         <div class="hero-counter">
           <span class="num" id="counter">1,247</span>
           <span class="cap">meters of rope rescued</span>
@@ -669,30 +660,7 @@
     </div>
 
     <div class="material-visual">
-      <svg viewBox="0 0 500 625" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <radialGradient id="glow" cx=".5" cy=".35" r=".8">
-            <stop offset="0" stop-color="#2E5689"/>
-            <stop offset="1" stop-color="#0E1E33"/>
-          </radialGradient>
-          <pattern id="w2" width="20" height="10" patternUnits="userSpaceOnUse">
-            <path d="M0 5 Q 5 0, 10 5 T 20 5" stroke="#EDEAD8" stroke-opacity=".9" fill="none" stroke-width="1.6"/>
-            <path d="M0 5 Q 5 10, 10 5 T 20 5" stroke="#C9A96A" stroke-opacity=".9" fill="none" stroke-width="1.6"/>
-          </pattern>
-        </defs>
-        <rect width="500" height="625" fill="url(#glow)"/>
-        <g transform="translate(250 312)">
-          <circle r="180" fill="none" stroke="#C9A96A" stroke-width="32" opacity=".3"/>
-          <circle r="180" fill="none" stroke="url(#w2)" stroke-width="32" opacity=".5"/>
-          <circle r="135" fill="none" stroke="#C9A96A" stroke-width="32" opacity=".55"/>
-          <circle r="135" fill="none" stroke="url(#w2)" stroke-width="32"/>
-          <circle r="90" fill="none" stroke="#B4593A" stroke-width="32" opacity=".7"/>
-          <circle r="90" fill="none" stroke="url(#w2)" stroke-width="32"/>
-          <circle r="45" fill="none" stroke="#E3DFC8" stroke-width="32"/>
-          <circle r="45" fill="none" stroke="url(#w2)" stroke-width="32"/>
-        </g>
-        <text x="40" y="590" fill="#EDEAD8" opacity=".5" font-family="Fraunces" font-style="italic" font-size="14">60m — Mammut 9.5 Infinity — Retired 03.2026 — Movement Gym, Boulder</text>
-      </svg>
+      <img src="pawpack/assets/pawpal-1.jpg" alt="PawPack dog with rope leash" style="width:100%;height:100%;object-fit:cover;">
     </div>
   </div>
 </section>
@@ -712,7 +680,7 @@
         <div class="carousel-track" id="pawpalsTrack">
           <article class="pawpal-card">
             <div class="pawpal-media">
-              <img src="assets/pawpal-1.jpg" alt="PawPal ambassador dog 1">
+              <img src="pawpack/assets/pawpal-1.jpg" alt="PawPal ambassador dog 1">
             </div>
             <div class="pawpal-copy">
               <div class="tag">PawPal 01</div>
@@ -723,7 +691,7 @@
 
           <article class="pawpal-card">
             <div class="pawpal-media">
-              <img src="assets/pawpal-2.png" alt="PawPal ambassador dog 2">
+              <img src="pawpack/assets/pawpal-2.png" alt="PawPal ambassador dog 2">
             </div>
             <div class="pawpal-copy">
               <div class="tag">PawPal 02</div>
@@ -734,7 +702,7 @@
 
           <article class="pawpal-card">
             <div class="pawpal-media">
-              <img src="assets/pawpal-3.png" alt="PawPal ambassador dog 3">
+              <img src="pawpack/assets/pawpal-3.png" alt="PawPal ambassador dog 3">
             </div>
             <div class="pawpal-copy">
               <div class="tag">PawPal 03</div>
@@ -745,7 +713,7 @@
 
           <article class="pawpal-card">
             <div class="pawpal-media">
-              <img src="assets/pawpal-4.png" alt="PawPal ambassador dog 4">
+              <img src="pawpack/assets/pawpal-4.png" alt="PawPal ambassador dog 4">
             </div>
             <div class="pawpal-copy">
               <div class="tag">PawPal 04</div>
@@ -756,7 +724,7 @@
 
           <article class="pawpal-card">
             <div class="pawpal-media">
-              <img src="assets/pawpal-5.png" alt="PawPal ambassador dog 5">
+              <img src="pawpack/assets/pawpal-5.png" alt="PawPal ambassador dog 5">
             </div>
             <div class="pawpal-copy">
               <div class="tag">PawPal 05</div>
@@ -767,7 +735,7 @@
 
           <article class="pawpal-card">
             <div class="pawpal-media">
-              <img src="assets/pawpal-6.png" alt="PawPal ambassador dog 6">
+              <img src="pawpack/assets/pawpal-6.png" alt="PawPal ambassador dog 6">
             </div>
             <div class="pawpal-copy">
               <div class="tag">PawPal 06</div>
@@ -943,22 +911,7 @@
       <a href="#" class="next-cta">Reserve a Trail Pack →</a>
     </div>
     <div class="next-visual">
-      <svg viewBox="0 0 500 500" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <radialGradient id="g2" cx=".5" cy=".5" r=".6">
-            <stop offset="0" stop-color="#2E5689"/>
-            <stop offset="1" stop-color="#0E1E33"/>
-          </radialGradient>
-        </defs>
-        <rect width="500" height="500" fill="url(#g2)"/>
-        <g transform="translate(250 250)" fill="none" stroke="#C9A96A" stroke-width="16" stroke-linecap="round">
-          <path d="M -120 -40 C -80 -80, -20 -80, 0 -20 C 20 40, 80 40, 120 0 C 80 -40, 20 -40, 0 20 C -20 80, -80 80, -120 40"/>
-          <path d="M -120 -40 C -80 -80, -20 -80, 0 -20 C 20 40, 80 40, 120 0 C 80 -40, 20 -40, 0 20 C -20 80, -80 80, -120 40"
-                stroke="#B4593A" stroke-width="4" stroke-dasharray="2 6"/>
-        </g>
-        <circle cx="60" cy="60" r="6" fill="#C9A96A"/>
-        <circle cx="440" cy="440" r="6" fill="#C9A96A"/>
-      </svg>
+      <img src="pawpack/assets/pawpal-6.png" alt="PawPack dog outdoors" style="width:100%;height:100%;object-fit:cover;">
     </div>
   </div>
 </section>
@@ -967,7 +920,7 @@
   <div class="foot-inner">
     <div class="foot-top">
       <div class="foot-brand">
-        <img src="assets/wordmark.png" alt="PawPack" />
+        <img src="pawpack/assets/wordmark.png" alt="PawPack" />
         <p>Gear for adventure dogs, made from retired alpine climbing rope. Designed in Richmond, Virginia. Sourced from climbing gyms across North America.</p>
       </div>
       <div class="foot-col">
