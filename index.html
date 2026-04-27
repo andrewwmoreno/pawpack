@@ -25,14 +25,13 @@
   html,body{background:var(--cream);color:var(--ink);font-family:"Inter Tight",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
   img{display:block;max-width:100%}
   a{color:inherit;text-decoration:none}
+  button{font:inherit}
 
-  /* ========= TYPOGRAPHY ========= */
   .display{font-family:"Fraunces",serif;font-weight:600;letter-spacing:-.02em;line-height:.92}
   .italic{font-style:italic}
   .eyebrow{font-family:"Inter Tight",sans-serif;text-transform:uppercase;letter-spacing:.22em;font-size:11px;font-weight:500;color:var(--mute)}
   .label{font-family:"Inter Tight",sans-serif;text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:500}
 
-  /* ========= NAV ========= */
   .nav{
     position:fixed;top:0;left:0;right:0;z-index:50;
     padding:18px var(--gut);
@@ -58,7 +57,6 @@
   .cta-pill .dot{width:6px;height:6px;border-radius:50%;background:var(--rope)}
   @media (max-width:900px){.nav ul{display:none}}
 
-  /* ========= HERO ========= */
   .hero{
     position:relative;min-height:100vh;
     padding:120px var(--gut) 80px;
@@ -70,6 +68,22 @@
   .hero-grid{
     max-width:var(--max);margin:0 auto;
     display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:end;
+  }
+  .hero-brand-lockup{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    margin-bottom:28px;
+  }
+  .hero-brand-lockup .mark{
+    width:72px;
+    height:72px;
+    object-fit:contain;
+  }
+  .hero-brand-lockup .word{
+    height:44px;
+    width:auto;
+    object-fit:contain;
   }
   .hero h1{
     font-size:clamp(56px,9vw,168px);
@@ -86,7 +100,6 @@
     position:relative;aspect-ratio:3/4;border-radius:4px;overflow:hidden;
     background:var(--navy);
   }
-  /* Illustrated hero "rope & trail" composition - pure SVG so it's self-contained */
   .hero-art{width:100%;height:100%;display:block}
   .hero-meta{
     position:absolute;left:var(--gut);bottom:24px;right:var(--gut);
@@ -103,20 +116,19 @@
   }
   .hero-counter .num{font-size:clamp(42px,5vw,72px);font-weight:600;color:var(--navy);letter-spacing:-.03em;display:block;line-height:1}
   .hero-counter .cap{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);margin-top:8px;display:block}
-
   .scroll-cue{
     position:absolute;left:50%;bottom:18px;transform:translateX(-50%);
     font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute);
     display:flex;align-items:center;gap:10px;
   }
   .scroll-cue::before{content:"";width:40px;height:1px;background:var(--mute)}
-
   @media (max-width:900px){
     .hero-grid{grid-template-columns:1fr;gap:40px}
     .hero-visual{aspect-ratio:4/5}
+    .hero-brand-lockup .mark{width:58px;height:58px}
+    .hero-brand-lockup .word{height:34px}
   }
 
-  /* ========= SECTION: DIFFERENCE (4 pillars) ========= */
   .difference{
     padding:140px var(--gut);
     background:var(--navy);
@@ -136,7 +148,6 @@
   @media (max-width:1000px){.pillars{grid-template-columns:repeat(2,1fr)}}
   @media (max-width:560px){.pillars{grid-template-columns:1fr}.difference-head{grid-template-columns:1fr;gap:30px}}
 
-  /* ========= SECTION: MATERIAL / STORY ========= */
   .material{
     padding:140px var(--gut);background:var(--cream);
   }
@@ -153,13 +164,202 @@
   .material-copy .cta:hover{background:var(--navy);color:var(--cream)}
   .material-copy .cta svg{transition:transform .3s ease}
   .material-copy .cta:hover svg{transform:translateX(4px)}
-
   .material-visual{
     aspect-ratio:4/5;background:var(--navy-deep);border-radius:4px;overflow:hidden;position:relative;
   }
   @media (max-width:900px){.material-inner{grid-template-columns:1fr;gap:40px}}
 
-  /* ========= SECTION: PROCESS (6 STEPS) ========= */
+  .gear-mini{
+    padding:120px var(--gut);
+    background:var(--cream-warm);
+  }
+  .gear-mini-inner{max-width:var(--max);margin:0 auto}
+  .gear-mini-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    gap:30px;
+    margin-bottom:50px;
+    flex-wrap:wrap;
+  }
+  .gear-mini-head h2{
+    font-size:clamp(38px,5vw,72px);
+    color:var(--navy);
+    letter-spacing:-.025em;
+  }
+  .gear-mini-head p{
+    max-width:44ch;
+    color:var(--mute);
+    line-height:1.6;
+    font-size:15px;
+  }
+  .gear-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  .gear-card{
+    background:var(--cream);
+    border:1px solid var(--hair);
+    border-radius:4px;
+    padding:30px 26px;
+    transition:transform .35s ease, box-shadow .35s ease;
+  }
+  .gear-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 18px 40px -24px rgba(20,42,69,.24);
+  }
+  .gear-card .kicker{
+    font-size:11px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--rust);
+    margin-bottom:14px;
+  }
+  .gear-card h3{
+    font-family:"Fraunces",serif;
+    font-size:28px;
+    font-weight:500;
+    color:var(--navy);
+    letter-spacing:-.015em;
+    margin-bottom:14px;
+  }
+  .gear-card p{
+    font-size:14px;
+    line-height:1.6;
+    color:var(--mute);
+  }
+  @media (max-width:900px){
+    .gear-grid{grid-template-columns:1fr}
+  }
+
+  .pawpals{
+    padding:140px var(--gut);
+    background:var(--cream);
+  }
+  .pawpals-inner{
+    max-width:var(--max);
+    margin:0 auto;
+  }
+  .pawpals-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    gap:40px;
+    margin-bottom:44px;
+    flex-wrap:wrap;
+  }
+  .pawpals-head h2{
+    font-size:clamp(44px,6vw,90px);
+    color:var(--navy);
+    letter-spacing:-.03em;
+  }
+  .pawpals-head h2 em{
+    color:var(--rust);
+    font-weight:500;
+  }
+  .pawpals-head p{
+    max-width:44ch;
+    font-size:15px;
+    line-height:1.65;
+    color:var(--mute);
+  }
+
+  .carousel-shell{
+    position:relative;
+  }
+  .carousel-viewport{
+    overflow:hidden;
+    border-radius:4px;
+  }
+  .carousel-track{
+    display:flex;
+    transition:transform .55s cubic-bezier(.2,.8,.2,1);
+    will-change:transform;
+  }
+  .pawpal-card{
+    min-width:calc(100% / 3);
+    padding:0 12px;
+  }
+  .pawpal-media{
+    background:var(--navy-deep);
+    border-radius:4px;
+    overflow:hidden;
+    aspect-ratio:4/5;
+    border:1px solid var(--hair);
+  }
+  .pawpal-media img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .pawpal-copy{
+    padding:18px 4px 0;
+  }
+  .pawpal-copy .tag{
+    font-size:11px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--rust);
+  }
+  .pawpal-copy h3{
+    margin-top:10px;
+    font-family:"Fraunces",serif;
+    font-size:24px;
+    color:var(--navy);
+    font-weight:500;
+    letter-spacing:-.015em;
+  }
+  .pawpal-copy p{
+    margin-top:10px;
+    font-size:14px;
+    line-height:1.55;
+    color:var(--mute);
+  }
+
+  .carousel-controls{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:28px;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+  .carousel-buttons{
+    display:flex;
+    gap:12px;
+  }
+  .carousel-btn{
+    width:48px;
+    height:48px;
+    border-radius:999px;
+    border:1px solid rgba(14,30,51,.18);
+    background:transparent;
+    color:var(--navy);
+    display:grid;
+    place-items:center;
+    cursor:pointer;
+    transition:all .25s ease;
+  }
+  .carousel-btn:hover{
+    background:var(--navy);
+    color:var(--cream);
+    border-color:var(--navy);
+  }
+  .carousel-status{
+    font-size:12px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--mute);
+  }
+
+  @media (max-width:1000px){
+    .pawpal-card{min-width:50%}
+  }
+  @media (max-width:680px){
+    .pawpal-card{min-width:100%;padding:0 8px}
+  }
+
   .process{
     padding:140px var(--gut);
     background:var(--cream-warm);
@@ -190,7 +390,6 @@
   .step p{font-size:14px;line-height:1.55;color:var(--mute)}
   @media (max-width:900px){.steps{grid-template-columns:1fr}}
 
-  /* ========= SECTION: STATS MARQUEE ========= */
   .stats{
     padding:120px var(--gut);background:var(--navy);color:var(--cream);
   }
@@ -206,7 +405,6 @@
   .stat p{margin-top:16px;font-size:14px;line-height:1.55;color:rgba(237,234,216,.65);max-width:28ch}
   @media (max-width:800px){.stats-grid{grid-template-columns:1fr}}
 
-  /* ========= SECTION: PERSONAS ========= */
   .personas{padding:140px var(--gut);background:var(--cream)}
   .personas-inner{max-width:var(--max);margin:0 auto}
   .personas-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:60px;flex-wrap:wrap}
@@ -228,7 +426,6 @@
   .persona .tag{position:absolute;top:24px;right:24px;font-size:10px;letter-spacing:.22em;color:var(--rope)}
   @media (max-width:900px){.persona-grid{grid-template-columns:1fr}}
 
-  /* ========= SECTION: FAQ ========= */
   .faq{padding:140px var(--gut);background:var(--cream-warm)}
   .faq-inner{max-width:960px;margin:0 auto}
   .faq-head{text-align:center;margin-bottom:60px}
@@ -251,7 +448,6 @@
   .faq-a-inner{padding:0 0 28px;font-size:16px;line-height:1.65;color:var(--mute);max-width:72ch}
   .faq-item.open .faq-a{max-height:400px}
 
-  /* ========= NEXT UP / CTA ========= */
   .next{padding:0;background:var(--navy)}
   .next-inner{
     max-width:var(--max);margin:0 auto;
@@ -271,7 +467,6 @@
   .next-visual{aspect-ratio:1/1;background:var(--navy-deep);border-radius:4px;overflow:hidden;position:relative}
   @media (max-width:900px){.next-inner{grid-template-columns:1fr}}
 
-  /* ========= FOOTER ========= */
   footer{background:var(--navy-deep);color:var(--cream);padding:80px var(--gut) 32px}
   .foot-inner{max-width:var(--max);margin:0 auto}
   .foot-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:40px;padding-bottom:60px;border-bottom:1px solid rgba(237,234,216,.15)}
@@ -285,33 +480,35 @@
   .foot-bottom .tag-line{font-family:"Fraunces",serif;font-style:italic;font-size:14px;color:var(--rope)}
   @media (max-width:900px){.foot-top{grid-template-columns:1fr 1fr;gap:30px}.foot-brand{grid-column:1/-1}}
 
-  /* Reveal animation */
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1)}
   .reveal.in{opacity:1;transform:none}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav class="nav">
   <a href="#top" class="brand">
-    <img src="assets/logo-mark.png" alt="PawPack" />
-    <img src="assets/wordmark.png" alt="PawPack" style="height:22px" />
+    <img src="assets/logo-mark.png" alt="PawPack logo mark" />
+    <img src="assets/wordmark.png" alt="PawPack wordmark" style="height:22px" />
   </a>
   <ul>
     <li><a href="#gear">The Gear</a></li>
     <li><a href="#story">Our Story</a></li>
+    <li><a href="#pawpals">PawPals</a></li>
     <li><a href="#process">How It's Made</a></li>
-    <li><a href="#trail">Trail Pack</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
   <a href="#subscribe" class="cta-pill"><span class="dot"></span>Join the Pack</a>
 </nav>
 
-<!-- HERO -->
 <section class="hero" id="top">
   <div class="hero-grid">
     <div>
+      <div class="hero-brand-lockup reveal">
+        <img class="mark" src="assets/logo-mark.png" alt="PawPack logo mark">
+        <img class="word" src="assets/wordmark.png" alt="PawPack wordmark">
+      </div>
+
       <h1 class="display reveal">
         <span class="ln">Born on</span>
         <span class="ln">the wall.</span>
@@ -319,12 +516,11 @@
         <span class="ln reborn">the trail.</span>
       </h1>
       <p class="hero-sub reveal">
-        Gear for adventure dogs, built from retired alpine climbing rope. Every leash, collar, and treat bag carries a material that was once trusted with a human life — and now earns its second life with yours.
+        Gear for adventure dogs, built from retired alpine climbing rope. Every leash, collar, treat bag, and bandana carries a material once trusted on the wall — and now built for the miles ahead.
       </p>
     </div>
 
     <div class="hero-visual">
-      <!-- Custom SVG: stylized rope on a trail horizon -->
       <svg class="hero-art" viewBox="0 0 600 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
@@ -343,23 +539,18 @@
           </pattern>
         </defs>
         <rect width="600" height="800" fill="url(#sky)"/>
-        <!-- Mountain silhouettes -->
         <path d="M0 560 L120 430 L210 500 L320 360 L430 460 L540 400 L600 440 L600 800 L0 800 Z" fill="#0E1E33" opacity=".85"/>
         <path d="M0 620 L100 540 L200 590 L300 500 L420 580 L520 520 L600 560 L600 800 L0 800 Z" fill="#091526"/>
-        <!-- Moon -->
         <circle cx="470" cy="170" r="44" fill="#EDEAD8" opacity=".9"/>
         <circle cx="458" cy="162" r="44" fill="#1E3A5F"/>
-        <!-- Flowing rope curve -->
         <path d="M-20 250 C 120 200, 200 340, 310 300 S 520 220, 640 320"
               stroke="url(#rope)" stroke-width="36" fill="none" stroke-linecap="round"/>
         <path d="M-20 250 C 120 200, 200 340, 310 300 S 520 220, 640 320"
               stroke="url(#weave)" stroke-width="36" fill="none" stroke-linecap="round"/>
-        <!-- Second rope, softer -->
         <path d="M-20 680 C 160 640, 280 740, 400 700 S 580 660, 640 690"
               stroke="#C9A96A" stroke-width="22" fill="none" stroke-linecap="round" opacity=".6"/>
         <path d="M-20 680 C 160 640, 280 740, 400 700 S 580 660, 640 690"
               stroke="url(#weave)" stroke-width="22" fill="none" stroke-linecap="round" opacity=".8"/>
-        <!-- Paw print -->
         <g transform="translate(80 80)" fill="#EDEAD8" opacity=".9">
           <ellipse cx="20" cy="30" rx="7" ry="10"/>
           <ellipse cx="38" cy="18" rx="7" ry="10"/>
@@ -382,7 +573,6 @@
   <div class="scroll-cue">Scroll</div>
 </section>
 
-<!-- DIFFERENCE -->
 <section class="difference" id="gear">
   <div class="difference-inner">
     <div class="difference-head">
@@ -400,7 +590,7 @@
           </svg>
         </div>
         <h3>100% Retired Climbing Rope</h3>
-        <p>Sourced directly from gyms and guide services when rope retires from climbing service — never cut short, never pulled early.</p>
+        <p>Sourced directly from gyms and guide services when rope retires from climbing service — then rebuilt for trail use.</p>
       </div>
       <div class="pillar reveal">
         <div class="ico">
@@ -419,7 +609,7 @@
           </svg>
         </div>
         <h3>Zero Waste Manufacturing</h3>
-        <p>Core becomes the leash. Offcuts become the collar. Sheath becomes the treat bag. Nothing leaves the workshop.</p>
+        <p>Core becomes the leash. Sheath becomes the collar. Offcuts become bandanas and treat-bag details. Nothing gets wasted.</p>
       </div>
       <div class="pillar reveal">
         <div class="ico">
@@ -429,19 +619,48 @@
           </svg>
         </div>
         <h3>Built for the Actual Trail</h3>
-        <p>Leash lengths, handle leverage, and collar widths configured for singletrack — not for the sidewalk.</p>
+        <p>Leash lengths, handle leverage, collars, and accessories configured for movement outside — not just the sidewalk loop.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- MATERIAL / STORY -->
+<section class="gear-mini" id="trail-pack">
+  <div class="gear-mini-inner">
+    <div class="gear-mini-head">
+      <div>
+        <span class="eyebrow reveal">Beyond the leash</span>
+        <h2 class="display reveal">The rest of the rope family.</h2>
+      </div>
+      <p class="reveal">PawPack starts with the flagship leash, but the full system extends across the rest of the walk: a rope collar, a trail-ready treat bag, and a bandana made from rescued-material offcuts.</p>
+    </div>
+
+    <div class="gear-grid">
+      <div class="gear-card reveal">
+        <div class="kicker">Extension One</div>
+        <h3>Rope Collar</h3>
+        <p>A durable everyday collar built from reclaimed rope components and paired to the leash by color family, finish, and provenance.</p>
+      </div>
+      <div class="gear-card reveal">
+        <div class="kicker">Extension Two</div>
+        <h3>Treat Bag</h3>
+        <p>A compact trail companion for rewards, recall work, and hikes that go longer than expected. Built from reclaimed material with practical carry in mind.</p>
+      </div>
+      <div class="gear-card reveal">
+        <div class="kicker">Extension Three</div>
+        <h3>Bandana</h3>
+        <p>Made from offcut textiles and finishing scraps, the bandana gives the rope family one more visible second life — functional, lightweight, and easy to rotate into every pack.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="material" id="story">
   <div class="material-inner">
     <div class="material-copy">
       <span class="eyebrow reveal">The Material</span>
       <h2 class="display reveal">A rope with a<br/><em class="italic">life already lived.</em></h2>
-      <p class="reveal">Alpine climbing rope is engineered to catch a falling climber — rated for dynamic human loads between 10 and 80 kN. When a rope reaches the end of its viable climbing life, it retires with years of trust built into every fiber. PawPack gives that rope somewhere to go next.</p>
+      <p class="reveal">Alpine climbing rope is engineered to catch a falling climber — then retired when its climbing life is complete. PawPack gives that rope somewhere to go next through trail gear that still carries the credibility of the material itself.</p>
       <p class="reveal" style="margin-top:20px">A dog leash asks a fraction of what the wall demanded. The safety rating isn't a claim. It's a floor.</p>
       <a href="#process" class="cta reveal">
         Follow the Rope
@@ -462,7 +681,6 @@
           </pattern>
         </defs>
         <rect width="500" height="625" fill="url(#glow)"/>
-        <!-- Coiled rope -->
         <g transform="translate(250 312)">
           <circle r="180" fill="none" stroke="#C9A96A" stroke-width="32" opacity=".3"/>
           <circle r="180" fill="none" stroke="url(#w2)" stroke-width="32" opacity=".5"/>
@@ -473,14 +691,104 @@
           <circle r="45" fill="none" stroke="#E3DFC8" stroke-width="32"/>
           <circle r="45" fill="none" stroke="url(#w2)" stroke-width="32"/>
         </g>
-        <!-- caption -->
         <text x="40" y="590" fill="#EDEAD8" opacity=".5" font-family="Fraunces" font-style="italic" font-size="14">60m — Mammut 9.5 Infinity — Retired 03.2026 — Movement Gym, Boulder</text>
       </svg>
     </div>
   </div>
 </section>
 
-<!-- PROCESS (6 STEPS) -->
+<section class="pawpals" id="pawpals">
+  <div class="pawpals-inner">
+    <div class="pawpals-head">
+      <div>
+        <span class="eyebrow reveal">PawPals</span>
+        <h2 class="display reveal">Meet the <em>brand ambassadors.</em></h2>
+      </div>
+      <p class="reveal">Our PawPals are the dogs who put PawPack into motion — testing gear on trail, in town, and everywhere between. They help show how retired rope performs in real life, and they carry the story of the brand out into the wild.</p>
+    </div>
+
+    <div class="carousel-shell reveal">
+      <div class="carousel-viewport">
+        <div class="carousel-track" id="pawpalsTrack">
+          <article class="pawpal-card">
+            <div class="pawpal-media">
+              <img src="assets/pawpal-1.jpg" alt="PawPal ambassador dog 1">
+            </div>
+            <div class="pawpal-copy">
+              <div class="tag">PawPal 01</div>
+              <h3>Trail Scout</h3>
+              <p>Always first to the overlook, first to the creek, and first to test whether a leash can keep up.</p>
+            </div>
+          </article>
+
+          <article class="pawpal-card">
+            <div class="pawpal-media">
+              <img src="assets/pawpal-2.jpg" alt="PawPal ambassador dog 2">
+            </div>
+            <div class="pawpal-copy">
+              <div class="tag">PawPal 02</div>
+              <h3>Canyon Cruiser</h3>
+              <p>Proof that trail-ready gear should look just as good in red rock as it does back at the trailhead.</p>
+            </div>
+          </article>
+
+          <article class="pawpal-card">
+            <div class="pawpal-media">
+              <img src="assets/pawpal-3.jpg" alt="PawPal ambassador dog 3">
+            </div>
+            <div class="pawpal-copy">
+              <div class="tag">PawPal 03</div>
+              <h3>Storm Walker</h3>
+              <p>Built for weather, rough footing, and the kind of days that turn a normal walk into an actual adventure.</p>
+            </div>
+          </article>
+
+          <article class="pawpal-card">
+            <div class="pawpal-media">
+              <img src="assets/pawpal-4.jpg" alt="PawPal ambassador dog 4">
+            </div>
+            <div class="pawpal-copy">
+              <div class="tag">PawPal 04</div>
+              <h3>Pack Leader</h3>
+              <p>Shows how PawPack gear works across different dogs, sizes, and daily routines — not just one kind of trail dog.</p>
+            </div>
+          </article>
+
+          <article class="pawpal-card">
+            <div class="pawpal-media">
+              <img src="assets/pawpal-5.jpg" alt="PawPal ambassador dog 5">
+            </div>
+            <div class="pawpal-copy">
+              <div class="tag">PawPal 05</div>
+              <h3>Woodland Ranger</h3>
+              <p>Ambassador for quiet miles, muddy paws, and gear that earns its keep on the long way around.</p>
+            </div>
+          </article>
+
+          <article class="pawpal-card">
+            <div class="pawpal-media">
+              <img src="assets/pawpal-6.jpg" alt="PawPal ambassador dog 6">
+            </div>
+            <div class="pawpal-copy">
+              <div class="tag">PawPal 06</div>
+              <h3>City-to-Trail</h3>
+              <p>For the dogs who start on pavement, end on dirt, and need one system that works for both.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="carousel-controls">
+        <div class="carousel-buttons">
+          <button class="carousel-btn" id="pawpalsPrev" aria-label="Previous PawPal">&#8592;</button>
+          <button class="carousel-btn" id="pawpalsNext" aria-label="Next PawPal">&#8594;</button>
+        </div>
+        <div class="carousel-status" id="pawpalsStatus">01 / 06</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="process" id="process">
   <div class="process-inner">
     <div class="process-head">
@@ -508,34 +816,33 @@
         <div class="step-img" style="background:linear-gradient(135deg,#1E3A5F 0%,#2E5689 100%);display:flex;align-items:flex-end;padding:20px;color:#EDEAD8;font-family:Fraunces,serif;font-style:italic;font-size:18px">Separation</div>
         <span class="step-num" style="position:static;color:var(--rust)">03.</span>
         <h3>Sheath &amp; Core</h3>
-        <p>Sheath is stripped from core. Core becomes the leash. Sheath is cut into collar strips. Offcuts are saved for treat bags.</p>
+        <p>Sheath is stripped from core. Core becomes the leash. Sheath is cut into collar components. Offcuts are saved for bandanas and trail accessories.</p>
       </div>
 
       <div class="step reveal">
         <div class="step-img" style="background:linear-gradient(135deg,#B4593A 0%,#1E3A5F 100%);display:flex;align-items:flex-end;padding:20px;color:#EDEAD8;font-family:Fraunces,serif;font-style:italic;font-size:18px">Richmond, VA</div>
         <span class="step-num" style="position:static;color:var(--rust)">04.</span>
         <h3>Cutting</h3>
-        <p>Rope is cut to trail-ready lengths in our Richmond workshop. Ends are heat-finished to prevent fraying. No bulk filler, no imported parts.</p>
+        <p>Rope is cut to trail-ready lengths in our Richmond workshop. Ends are heat-finished to prevent fraying. No filler, no throwaway trim.</p>
       </div>
 
       <div class="step reveal">
         <div class="step-img" style="background:linear-gradient(135deg,#0E1E33 0%,#1E3A5F 100%);display:flex;align-items:flex-end;padding:20px;color:#C9A96A;font-family:Fraunces,serif;font-style:italic;font-size:18px">Hand Assembly</div>
         <span class="step-num" style="position:static;color:var(--rust)">05.</span>
         <h3>Assembly</h3>
-        <p>Solid brass hardware attached by hand. Each unit is inspected, tagged with provenance, and paired with a QR code linking back to the rope's history.</p>
+        <p>Hardware attached by hand. Each unit is inspected, tagged with provenance, and paired to the rest of the rope family.</p>
       </div>
 
       <div class="step reveal">
         <div class="step-img" style="background:linear-gradient(135deg,#C9A96A 0%,#1E3A5F 100%);display:flex;align-items:flex-end;padding:20px;color:#EDEAD8;font-family:Fraunces,serif;font-style:italic;font-size:18px">Trail-Ready</div>
         <span class="step-num" style="position:static;color:var(--rust)">06.</span>
         <h3>To Your Door</h3>
-        <p>Shipped in a compostable kraft box with a handwritten note from the maker. The rope's next life begins when you clip it on.</p>
+        <p>Shipped in a compostable box with a handwritten note and the story of the rope’s first life — ready for its second.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STATS -->
 <section class="stats" id="trail">
   <div class="stats-inner">
     <div class="stats-head">
@@ -556,13 +863,12 @@
       <div class="stat reveal">
         <div class="big">0<sup>%</sup></div>
         <div class="unit">Waste to landfill</div>
-        <p>Core, sheath, and offcuts all become product. What can't become a leash becomes a collar, a treat bag, or shop thread.</p>
+        <p>Core, sheath, and offcuts all become product-family components across leash, collar, treat bag, and bandana.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PERSONAS -->
 <section class="personas">
   <div class="personas-inner">
     <div class="personas-head">
@@ -596,7 +902,6 @@
   </div>
 </section>
 
-<!-- FAQ -->
 <section class="faq" id="faq">
   <div class="faq-inner">
     <div class="faq-head">
@@ -607,35 +912,34 @@
     <div class="faq-list">
       <div class="faq-item">
         <button class="faq-q">Is the rope safe for my dog? <span class="plus"></span></button>
-        <div class="faq-a"><div class="faq-a-inner">Retired alpine climbing rope is rated for dynamic human falls — typically 10 to 80 kN depending on spec. A dog leash operates far below that design threshold. We only source rope that has completed its climbing life on its own terms. It has never been used in a failure event.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Retired alpine climbing rope is massively overbuilt for the loads of everyday dog walking and trail use. We source only rope that has completed its climbing life, then inspect, rework, and rebuild it for its second life off the wall.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">Where does the rope come from? <span class="plus"></span></button>
-        <div class="faq-a"><div class="faq-a-inner">Directly from partner climbing gyms and guide services. Every leash ships with the gym of origin, rope model, and retirement date on the hang tag. Scan the QR code and you can see photos from the rope's climbing life.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Directly from partner climbing gyms and guide services. Every leash ships with the gym of origin, rope model, and retirement date on the hang tag. That provenance is core to the brand.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">What does "zero waste" actually mean here? <span class="plus"></span></button>
-        <div class="faq-a"><div class="faq-a-inner">Every inch of every rope becomes a product. The core yields the leash. The sheath becomes collar strips. Offcuts are sewn into treat bags. End fibers are used as workshop thread. Nothing goes to landfill — and nothing is imported to make up the difference.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">We design around full-material use. The leash leads the product family, then the rest of the rope is reworked into companion items like collars, treat bags, bandanas, and accessory details instead of being discarded.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">What does a PawPack subscription include? <span class="plus"></span></button>
-        <div class="faq-a"><div class="faq-a-inner">The quarterly Trail Pack includes seasonal trail treats, a consumable, and a rotating piece of gear or accessory — always built from the same rope family as the flagship leash. Founding members also get access to first-drop rope batches and gym collaborations.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">The Trail Pack ships every 2 months and includes seasonal trail treats, a consumable, and a rotating gear or accessory drop tied back to the same PawPack material story.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">Can I buy just the leash? <span class="plus"></span></button>
-        <div class="faq-a"><div class="faq-a-inner">Yes. The Trail Leash is available as a one-time purchase at $28. The collar and treat bag are also available standalone. The subscription is designed for owners who want the full rope-family experience shipped quarterly.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Yes. The Trail Leash is available as a standalone item, while the rope collar, treat bag, and bandana round out the rest of the rope family for customers who want the full system.</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- NEXT UP -->
 <section class="next" id="subscribe">
   <div class="next-inner">
     <div class="next-copy">
       <span class="eyebrow">Next Up</span>
       <h2 class="display">Claim your<br/><em class="italic" style="color:var(--rope);font-weight:500">founding spot.</em></h2>
-      <p>The first 100 Trail Pack subscribers get locked-in founding member pricing ($38/quarter), early access to new rope drops, and a handwritten note from the rope's origin gym.</p>
+      <p>The first 100 Trail Pack subscribers get locked-in founding member pricing, early access to new rope drops, and a handwritten note from the rope's origin gym.</p>
       <a href="#" class="next-cta">Reserve a Trail Pack →</a>
     </div>
     <div class="next-visual">
@@ -647,7 +951,6 @@
           </radialGradient>
         </defs>
         <rect width="500" height="500" fill="url(#g2)"/>
-        <!-- Climbing knot (figure-8) -->
         <g transform="translate(250 250)" fill="none" stroke="#C9A96A" stroke-width="16" stroke-linecap="round">
           <path d="M -120 -40 C -80 -80, -20 -80, 0 -20 C 20 40, 80 40, 120 0 C 80 -40, 20 -40, 0 20 C -20 80, -80 80, -120 40"/>
           <path d="M -120 -40 C -80 -80, -20 -80, 0 -20 C 20 40, 80 40, 120 0 C 80 -40, 20 -40, 0 20 C -20 80, -80 80, -120 40"
@@ -660,7 +963,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="foot-inner">
     <div class="foot-top">
@@ -674,7 +976,7 @@
           <li><a href="#">Trail Leash</a></li>
           <li><a href="#">Rope Collar</a></li>
           <li><a href="#">Treat Bag</a></li>
-          <li><a href="#">Trail Pack Sub</a></li>
+          <li><a href="#">Bandana</a></li>
         </ul>
       </div>
       <div class="foot-col">
@@ -683,7 +985,7 @@
           <li><a href="#">Our Rope</a></li>
           <li><a href="#">Gym Partners</a></li>
           <li><a href="#">How It's Made</a></li>
-          <li><a href="#">Journal</a></li>
+          <li><a href="#">PawPals</a></li>
         </ul>
       </div>
       <div class="foot-col">
@@ -713,13 +1015,16 @@
 </footer>
 
 <script>
-  // Reveal on scroll
   const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    })
   },{threshold:.15});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-  // FAQ accordion
   document.querySelectorAll('.faq-q').forEach(q=>{
     q.addEventListener('click',()=>{
       const item = q.parentElement;
@@ -729,7 +1034,6 @@
     });
   });
 
-  // Hero counter animation
   const counter = document.getElementById('counter');
   const target = 1247;
   let start = null;
@@ -741,8 +1045,47 @@
     counter.textContent = Math.floor(eased*target).toLocaleString();
     if(p<1) requestAnimationFrame(tick);
   }
-  // delay so the reveal animation lands first
   setTimeout(()=>requestAnimationFrame(tick), 400);
+
+  const track = document.getElementById('pawpalsTrack');
+  const prevBtn = document.getElementById('pawpalsPrev');
+  const nextBtn = document.getElementById('pawpalsNext');
+  const status = document.getElementById('pawpalsStatus');
+  const cards = Array.from(track.children);
+
+  let visible = window.innerWidth <= 680 ? 1 : window.innerWidth <= 1000 ? 2 : 3;
+  let index = 0;
+
+  function maxIndex(){
+    return Math.max(0, cards.length - visible);
+  }
+
+  function updateCarousel(){
+    visible = window.innerWidth <= 680 ? 1 : window.innerWidth <= 1000 ? 2 : 3;
+    if(index > maxIndex()) index = maxIndex();
+
+    const cardWidth = cards[0].getBoundingClientRect().width;
+    track.style.transform = `translateX(-\${index * cardWidth}px)`;
+
+    const current = Math.min(index + 1, cards.length);
+    const total = cards.length;
+    status.textContent = `\${String(current).padStart(2,'0')} / \${String(total).padStart(2,'0')}`;
+  }
+
+  nextBtn.addEventListener('click', ()=>{
+    if(index < maxIndex()) index++;
+    else index = 0;
+    updateCarousel();
+  });
+
+  prevBtn.addEventListener('click', ()=>{
+    if(index > 0) index--;
+    else index = maxIndex();
+    updateCarousel();
+  });
+
+  window.addEventListener('resize', updateCarousel);
+  window.addEventListener('load', updateCarousel);
 </script>
 
 </body>
