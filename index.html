@@ -1144,11 +1144,11 @@
     if(index > maxIndex()) index = maxIndex();
 
     const cardWidth = cards[0].getBoundingClientRect().width;
-    track.style.transform = `translateX(-\${index * cardWidth}px)`;
+    track.style.transform = `translateX(-${index * cardWidth}px)`;
 
     const current = Math.min(index + 1, cards.length);
     const total = cards.length;
-    status.textContent = `\${String(current).padStart(2,'0')} / \${String(total).padStart(2,'0')}`;
+    status.textContent = `${String(current).padStart(2,'0')} / ${String(total).padStart(2,'0')}`;
   }
 
   nextBtn.addEventListener('click', ()=>{
