@@ -1,0 +1,1171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>PawPack — Born on the wall. Rescued on the trail.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,400&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1E3A5F;
+    --navy-deep:#142A45;
+    --cream:#EDEAD8;
+    --cream-warm:#E3DFC8;
+    --rope:#C9A96A;
+    --rust:#B4593A;
+    --ink:#0E1E33;
+    --mute:rgba(14,30,51,.55);
+    --hair:rgba(14,30,51,.12);
+    --max:1440px;
+    --gut:clamp(20px,3vw,48px);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--cream);color:var(--ink);font-family:"Inter Tight",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit}
+
+  .display{font-family:"Fraunces",serif;font-weight:600;letter-spacing:-.02em;line-height:.92}
+  .italic{font-style:italic}
+  .eyebrow{font-family:"Inter Tight",sans-serif;text-transform:uppercase;letter-spacing:.22em;font-size:11px;font-weight:500;color:var(--mute)}
+  .label{font-family:"Inter Tight",sans-serif;text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:500}
+
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    padding:18px var(--gut);
+    display:flex;align-items:center;justify-content:space-between;
+    backdrop-filter:blur(12px);
+    background:rgba(237,234,216,.72);
+    border-bottom:1px solid var(--hair);
+  }
+  .nav .brand{display:flex;align-items:center;gap:10px}
+  .nav .brand img:first-child{height:34px;width:auto}
+  .nav .brand img:last-child{height:24px;width:auto}
+  .nav ul{display:flex;gap:36px;list-style:none}
+  .nav ul a{font-size:13px;font-weight:500;letter-spacing:.02em;position:relative;padding:6px 0}
+  .nav ul a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+  .nav ul a:hover::after{transform:scaleX(1)}
+  .cta-pill{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--navy);color:var(--cream);
+    padding:11px 20px;border-radius:999px;
+    font-size:13px;font-weight:500;letter-spacing:.02em;
+    transition:transform .3s ease, background .3s ease;
+  }
+  .cta-pill:hover{transform:translateY(-1px);background:var(--navy-deep)}
+  .cta-pill .dot{width:6px;height:6px;border-radius:50%;background:var(--rope)}
+  @media (max-width:900px){.nav ul{display:none}}
+
+  .hero{
+    position:relative;min-height:100vh;
+    padding:130px var(--gut) 80px;
+    background:
+      radial-gradient(1200px 600px at 80% 20%, rgba(30,58,95,.08), transparent 60%),
+      var(--cream);
+    overflow:hidden;
+  }
+  .hero-grid{
+    max-width:var(--max);margin:0 auto;
+    display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:end;
+  }
+  .hero-brand-lockup{
+    display:flex;
+    align-items:center;
+    gap:22px;
+    margin-bottom:34px;
+  }
+  .hero-brand-lockup .mark{
+    width:96px;
+    height:96px;
+    object-fit:contain;
+  }
+  .hero-brand-lockup .word{
+    height:62px;
+    width:auto;
+    object-fit:contain;
+  }
+  .hero h1{
+    font-size:clamp(56px,9vw,168px);
+    color:var(--navy);
+    letter-spacing:-.035em;
+  }
+  .hero h1 .ln{display:block}
+  .hero h1 .rescued{font-style:italic;font-weight:500;color:var(--rust)}
+  .hero-sub{
+    margin-top:28px;max-width:42ch;
+    font-size:clamp(16px,1.3vw,19px);line-height:1.55;color:var(--mute);
+  }
+  .hero-visual{
+    position:relative;
+    aspect-ratio:3/4;
+    border-radius:4px;
+    overflow:hidden;
+    background:var(--navy);
+    box-shadow:0 24px 60px -30px rgba(20,42,69,.35);
+  }
+  .hero-visual img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center center;
+  }
+  .hero-meta{
+    position:absolute;left:var(--gut);bottom:24px;right:var(--gut);
+    display:flex;justify-content:space-between;align-items:flex-end;gap:20px;
+  }
+  .hero-caption{
+    font-family:"Fraunces",serif;font-style:italic;font-size:18px;color:rgba(237,234,216,.92);
+    max-width:32ch;
+    text-shadow:0 2px 18px rgba(14,30,51,.35);
+  }
+  .hero-counter{
+    text-align:right;
+    font-family:"Fraunces",serif;
+  }
+  .hero-counter .num{
+    font-size:clamp(42px,5vw,72px);
+    font-weight:600;
+    color:var(--cream);
+    letter-spacing:-.03em;
+    display:block;
+    line-height:1;
+    text-shadow:0 2px 18px rgba(14,30,51,.35);
+  }
+  .hero-counter .cap{
+    font-size:11px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:rgba(237,234,216,.85);
+    margin-top:8px;
+    display:block;
+    text-shadow:0 2px 18px rgba(14,30,51,.35);
+  }
+
+  .scroll-cue{
+    position:absolute;left:50%;bottom:18px;transform:translateX(-50%);
+    font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute);
+    display:flex;align-items:center;gap:10px;
+  }
+  .scroll-cue::before{content:"";width:40px;height:1px;background:var(--mute)}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:40px}
+    .hero-visual{aspect-ratio:4/5}
+    .hero-brand-lockup .mark{width:78px;height:78px}
+    .hero-brand-lockup .word{height:48px}
+  }
+
+  .difference{
+    padding:140px var(--gut);
+    background:var(--navy);
+    color:var(--cream);
+    position:relative;
+  }
+  .difference-inner{max-width:var(--max);margin:0 auto}
+  .difference-head{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:end;margin-bottom:80px}
+  .difference-head h2{font-size:clamp(48px,7vw,120px);letter-spacing:-.03em}
+  .difference-head h2 .amp{font-style:italic;color:var(--rope);font-weight:500}
+  .difference-head p{font-size:17px;line-height:1.6;color:rgba(237,234,216,.75);max-width:46ch}
+  .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(237,234,216,.14)}
+  .pillar{background:var(--navy);padding:40px 28px;display:flex;flex-direction:column;gap:22px;min-height:260px}
+  .pillar .ico{width:48px;height:48px;display:grid;place-items:center;color:var(--rope)}
+  .pillar h3{font-family:"Fraunces",serif;font-size:22px;font-weight:500;letter-spacing:-.01em;line-height:1.2}
+  .pillar p{font-size:13px;line-height:1.55;color:rgba(237,234,216,.7)}
+  @media (max-width:1000px){.pillars{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:560px){.pillars{grid-template-columns:1fr}.difference-head{grid-template-columns:1fr;gap:30px}}
+
+  /* ===== AD VIDEO ===== */
+  .ad-video{
+    background:var(--navy-deep);
+    padding:80px var(--gut);
+    position:relative;
+  }
+  .ad-video-inner{
+    max-width:1180px;
+    margin:0 auto;
+  }
+  .ad-video-head{
+    text-align:center;
+    margin-bottom:36px;
+  }
+  .ad-video-head .eyebrow{
+    color:var(--rope);
+  }
+  .ad-video-head h2{
+    font-family:"Fraunces",serif;
+    font-size:clamp(36px,5vw,68px);
+    color:var(--cream);
+    letter-spacing:-.025em;
+    margin-top:14px;
+    line-height:1;
+  }
+  .ad-video-head h2 em{
+    font-style:italic;
+    color:var(--rope);
+    font-weight:500;
+  }
+  .ad-video-head p{
+    margin-top:18px;
+    color:rgba(237,234,216,.7);
+    font-size:15px;
+    line-height:1.55;
+    max-width:54ch;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .ad-video-frame{
+    position:relative;
+    border-radius:6px;
+    overflow:hidden;
+    background:#000;
+    box-shadow:0 30px 80px -30px rgba(0,0,0,.6);
+    aspect-ratio:16/9;
+  }
+  .ad-video-frame video{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    background:#000;
+  }
+  .ad-video-caption{
+    margin-top:20px;
+    text-align:center;
+    font-family:"Fraunces",serif;
+    font-style:italic;
+    font-size:14px;
+    color:rgba(237,234,216,.55);
+    letter-spacing:.02em;
+  }
+  @media (max-width:700px){
+    .ad-video{padding:60px var(--gut)}
+  }
+
+  .gear-mini{
+    padding:120px var(--gut);
+    background:var(--cream-warm);
+  }
+  .gear-mini-inner{max-width:var(--max);margin:0 auto}
+  .gear-mini-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    gap:30px;
+    margin-bottom:50px;
+    flex-wrap:wrap;
+  }
+  .gear-mini-head h2{
+    font-size:clamp(38px,5vw,72px);
+    color:var(--navy);
+    letter-spacing:-.025em;
+  }
+  .gear-mini-head p{
+    max-width:44ch;
+    color:var(--mute);
+    line-height:1.6;
+    font-size:15px;
+  }
+  .gear-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  .gear-card{
+    background:var(--cream);
+    border:1px solid var(--hair);
+    border-radius:4px;
+    padding:0;
+    overflow:hidden;
+    transition:transform .35s ease, box-shadow .35s ease;
+    display:flex;
+    flex-direction:column;
+  }
+  .gear-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 18px 40px -24px rgba(20,42,69,.24);
+  }
+  .gear-card .gear-img{
+    aspect-ratio:4/3;
+    overflow:hidden;
+    background:var(--cream-warm);
+    border-bottom:1px solid var(--hair);
+  }
+  .gear-card .gear-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform .6s ease;
+  }
+  .gear-card:hover .gear-img img{
+    transform:scale(1.04);
+  }
+  .gear-card .gear-body{
+    padding:30px 26px;
+  }
+  .gear-card .kicker{
+    font-size:11px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--rust);
+    margin-bottom:14px;
+  }
+  .gear-card h3{
+    font-family:"Fraunces",serif;
+    font-size:28px;
+    font-weight:500;
+    color:var(--navy);
+    letter-spacing:-.015em;
+    margin-bottom:14px;
+  }
+  .gear-card p{
+    font-size:14px;
+    line-height:1.6;
+    color:var(--mute);
+  }
+  @media (max-width:900px){
+    .gear-grid{grid-template-columns:1fr}
+  }
+
+  .material{
+    padding:140px var(--gut);background:var(--cream);
+  }
+  .material-inner{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  .material-copy .eyebrow{color:var(--rust)}
+  .material-copy h2{font-size:clamp(40px,5vw,72px);color:var(--navy);margin:20px 0 24px;letter-spacing:-.025em}
+  .material-copy p{font-size:17px;line-height:1.65;color:var(--mute);max-width:52ch}
+  .material-copy .cta{
+    margin-top:36px;display:inline-flex;align-items:center;gap:14px;
+    padding:14px 24px;border:1px solid var(--navy);border-radius:999px;
+    font-size:13px;font-weight:500;letter-spacing:.04em;color:var(--navy);
+    transition:all .3s ease;
+  }
+  .material-copy .cta:hover{background:var(--navy);color:var(--cream)}
+  .material-copy .cta svg{transition:transform .3s ease}
+  .material-copy .cta:hover svg{transform:translateX(4px)}
+
+  .material-visual{
+    aspect-ratio:4/5;background:var(--navy-deep);border-radius:4px;overflow:hidden;position:relative;
+  }
+  @media (max-width:900px){.material-inner{grid-template-columns:1fr;gap:40px}}
+
+  .pawpals{
+    padding:140px var(--gut);
+    background:var(--cream);
+  }
+  .pawpals-inner{
+    max-width:var(--max);
+    margin:0 auto;
+  }
+  .pawpals-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    gap:40px;
+    margin-bottom:44px;
+    flex-wrap:wrap;
+  }
+  .pawpals-head h2{
+    font-size:clamp(44px,6vw,90px);
+    color:var(--navy);
+    letter-spacing:-.03em;
+  }
+  .pawpals-head h2 em{
+    color:var(--rust);
+    font-weight:500;
+  }
+  .pawpals-head p{
+    max-width:44ch;
+    font-size:15px;
+    line-height:1.65;
+    color:var(--mute);
+  }
+
+  .carousel-shell{
+    position:relative;
+  }
+  .carousel-viewport{
+    overflow:hidden;
+    border-radius:4px;
+  }
+  .carousel-track{
+    display:flex;
+    transition:transform .55s cubic-bezier(.2,.8,.2,1);
+    will-change:transform;
+  }
+  .pawpal-card{
+    min-width:calc(100% / 3);
+    padding:0 12px;
+  }
+  .pawpal-media{
+    background:var(--navy-deep);
+    border-radius:4px;
+    overflow:hidden;
+    aspect-ratio:4/5;
+    border:1px solid var(--hair);
+  }
+  .pawpal-media img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .pawpal-copy{
+    padding:18px 4px 0;
+  }
+  .pawpal-copy .tag{
+    font-size:11px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--rust);
+  }
+  .pawpal-copy h3{
+    margin-top:10px;
+    font-family:"Fraunces",serif;
+    font-size:24px;
+    color:var(--navy);
+    font-weight:500;
+    letter-spacing:-.015em;
+  }
+  .pawpal-copy p{
+    margin-top:10px;
+    font-size:14px;
+    line-height:1.55;
+    color:var(--mute);
+  }
+
+  .carousel-controls{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:28px;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+  .carousel-buttons{
+    display:flex;
+    gap:12px;
+  }
+  .carousel-btn{
+    width:48px;
+    height:48px;
+    border-radius:999px;
+    border:1px solid rgba(14,30,51,.18);
+    background:transparent;
+    color:var(--navy);
+    display:grid;
+    place-items:center;
+    cursor:pointer;
+    transition:all .25s ease;
+  }
+  .carousel-btn:hover{
+    background:var(--navy);
+    color:var(--cream);
+    border-color:var(--navy);
+  }
+  .carousel-status{
+    font-size:12px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--mute);
+  }
+
+  @media (max-width:1000px){
+    .pawpal-card{min-width:50%}
+  }
+  @media (max-width:680px){
+    .pawpal-card{min-width:100%;padding:0 8px}
+  }
+
+  .process{
+    padding:140px var(--gut);
+    background:var(--cream-warm);
+    position:relative;
+  }
+  .process-inner{max-width:var(--max);margin:0 auto}
+  .process-head{text-align:center;margin-bottom:80px}
+  .process-head h2{font-size:clamp(48px,7vw,112px);color:var(--navy);letter-spacing:-.03em}
+  .process-head h2 em{color:var(--rust);font-weight:500}
+  .process-head p{margin-top:24px;font-size:16px;color:var(--mute);max-width:55ch;margin-left:auto;margin-right:auto}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .step{
+    background:var(--cream);border-radius:4px;padding:28px;
+    display:flex;flex-direction:column;gap:18px;
+    border:1px solid var(--hair);
+    transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease;
+  }
+  .step:hover{transform:translateY(-6px);box-shadow:0 20px 40px -20px rgba(20,42,69,.2)}
+  .step-img{
+    aspect-ratio:16/10;background:var(--navy);border-radius:2px;overflow:hidden;position:relative;
+  }
+  .step-num{
+    position:absolute;top:16px;left:16px;
+    font-family:"Fraunces",serif;font-style:italic;font-size:48px;color:var(--rope);font-weight:500;line-height:1;
+    mix-blend-mode:normal;
+  }
+  .step h3{font-family:"Fraunces",serif;font-size:26px;font-weight:500;color:var(--navy);letter-spacing:-.01em}
+  .step p{font-size:14px;line-height:1.55;color:var(--mute)}
+  @media (max-width:900px){.steps{grid-template-columns:1fr}}
+
+  .stats{
+    padding:120px var(--gut);background:var(--navy);color:var(--cream);
+  }
+  .stats-inner{max-width:var(--max);margin:0 auto}
+  .stats-head{margin-bottom:60px}
+  .stats-head .eyebrow{color:var(--rope)}
+  .stats-head h2{font-size:clamp(48px,7vw,112px);letter-spacing:-.03em;margin-top:16px}
+  .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(237,234,216,.14)}
+  .stat{background:var(--navy);padding:50px 30px}
+  .stat .big{font-family:"Fraunces",serif;font-size:clamp(64px,8vw,128px);font-weight:600;color:var(--cream);letter-spacing:-.04em;line-height:.9}
+  .stat .big sup{font-size:.4em;font-weight:500;color:var(--rope);margin-left:4px;top:-.6em}
+  .stat .unit{font-family:"Fraunces",serif;font-style:italic;font-size:20px;color:var(--rope);margin-top:10px}
+  .stat p{margin-top:16px;font-size:14px;line-height:1.55;color:rgba(237,234,216,.65);max-width:28ch}
+  @media (max-width:800px){.stats-grid{grid-template-columns:1fr}}
+
+  .personas{padding:140px var(--gut);background:var(--cream)}
+  .personas-inner{max-width:var(--max);margin:0 auto}
+  .personas-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:60px;flex-wrap:wrap}
+  .personas-head h2{font-size:clamp(44px,6vw,88px);color:var(--navy);letter-spacing:-.025em}
+  .personas-head h2 em{color:var(--rust);font-weight:500}
+  .personas-head p{max-width:40ch;font-size:15px;line-height:1.6;color:var(--mute)}
+  .persona-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .persona{
+    background:var(--navy);color:var(--cream);
+    border-radius:4px;padding:36px 28px 28px;
+    position:relative;overflow:hidden;
+    transition:transform .4s ease;
+  }
+  .persona:hover{transform:translateY(-6px)}
+  .persona .num{font-family:"Fraunces",serif;font-style:italic;font-size:14px;color:var(--rope);letter-spacing:.1em}
+  .persona h3{font-family:"Fraunces",serif;font-size:34px;font-weight:500;margin-top:18px;letter-spacing:-.015em;line-height:1.05}
+  .persona .role{font-size:12px;text-transform:uppercase;letter-spacing:.2em;color:rgba(237,234,216,.6);margin-top:10px}
+  .persona .quote{font-family:"Fraunces",serif;font-style:italic;font-size:16px;line-height:1.5;color:rgba(237,234,216,.85);margin-top:24px;padding-top:20px;border-top:1px solid rgba(237,234,216,.15)}
+  .persona .tag{position:absolute;top:24px;right:24px;font-size:10px;letter-spacing:.22em;color:var(--rope)}
+  @media (max-width:900px){.persona-grid{grid-template-columns:1fr}}
+
+  .faq{padding:140px var(--gut);background:var(--cream-warm)}
+  .faq-inner{max-width:960px;margin:0 auto}
+  .faq-head{text-align:center;margin-bottom:60px}
+  .faq-head h2{font-size:clamp(56px,8vw,140px);color:var(--navy);letter-spacing:-.03em}
+  .faq-head h2 em{color:var(--rust);font-weight:500}
+  .faq-list{border-top:1px solid rgba(14,30,51,.2)}
+  .faq-item{border-bottom:1px solid rgba(14,30,51,.2)}
+  .faq-q{
+    width:100%;background:none;border:0;text-align:left;
+    padding:28px 0;display:flex;justify-content:space-between;align-items:center;gap:24px;
+    font-family:"Fraunces",serif;font-size:clamp(20px,2.2vw,26px);font-weight:500;color:var(--navy);
+    cursor:pointer;letter-spacing:-.01em;
+  }
+  .faq-q .plus{width:22px;height:22px;position:relative;flex-shrink:0;transition:transform .4s ease}
+  .faq-q .plus::before,.faq-q .plus::after{content:"";position:absolute;inset:0;margin:auto;background:var(--navy)}
+  .faq-q .plus::before{width:22px;height:1.5px;top:50%;transform:translateY(-50%)}
+  .faq-q .plus::after{width:1.5px;height:22px;left:50%;transform:translateX(-50%);transition:transform .4s ease}
+  .faq-item.open .faq-q .plus::after{transform:translateX(-50%) rotate(90deg)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.2,.8,.2,1)}
+  .faq-a-inner{padding:0 0 28px;font-size:16px;line-height:1.65;color:var(--mute);max-width:72ch}
+  .faq-item.open .faq-a{max-height:400px}
+
+  .next{padding:0;background:var(--navy)}
+  .next-inner{
+    max-width:var(--max);margin:0 auto;
+    padding:100px var(--gut) 100px;
+    display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+  }
+  .next-copy .eyebrow{color:var(--rope)}
+  .next-copy h2{font-size:clamp(44px,6vw,96px);color:var(--cream);margin:18px 0 28px;letter-spacing:-.025em}
+  .next-copy p{font-size:17px;line-height:1.6;color:rgba(237,234,216,.7);max-width:46ch;margin-bottom:32px}
+  .next-cta{
+    display:inline-flex;align-items:center;gap:14px;
+    padding:16px 28px;background:var(--rope);color:var(--navy-deep);
+    border-radius:999px;font-size:14px;font-weight:600;letter-spacing:.04em;
+    transition:transform .3s ease;
+  }
+  .next-cta:hover{transform:translateY(-2px)}
+  .next-visual{aspect-ratio:1/1;background:var(--navy-deep);border-radius:4px;overflow:hidden;position:relative}
+  @media (max-width:900px){.next-inner{grid-template-columns:1fr}}
+
+  footer{background:var(--navy-deep);color:var(--cream);padding:80px var(--gut) 32px}
+  .foot-inner{max-width:var(--max);margin:0 auto}
+  .foot-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:40px;padding-bottom:60px;border-bottom:1px solid rgba(237,234,216,.15)}
+  .foot-brand img{height:36px;width:auto;filter:invert(1) brightness(2) contrast(1);opacity:.9}
+  .foot-brand p{margin-top:20px;font-size:14px;line-height:1.6;color:rgba(237,234,216,.6);max-width:32ch}
+  .foot-col h4{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--rope);margin-bottom:20px;font-weight:500}
+  .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+  .foot-col a{font-size:14px;color:rgba(237,234,216,.8);transition:color .3s}
+  .foot-col a:hover{color:var(--cream)}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:30px;font-size:12px;color:rgba(237,234,216,.5);gap:20px;flex-wrap:wrap}
+  .foot-bottom .tag-line{font-family:"Fraunces",serif;font-style:italic;font-size:14px;color:var(--rope)}
+  @media (max-width:900px){.foot-top{grid-template-columns:1fr 1fr;gap:30px}.foot-brand{grid-column:1/-1}}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="#top" class="brand">
+    <img src="assets/logo-mark.png" alt="PawPack logo mark" />
+    <img src="assets/wordmark.png" alt="PawPack wordmark" />
+  </a>
+  <ul>
+    <li><a href="#gear">The Gear</a></li>
+    <li><a href="#story">Our Story</a></li>
+    <li><a href="#pawpals">PawPals</a></li>
+    <li><a href="#process">How It's Made</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="#subscribe" class="cta-pill"><span class="dot"></span>Join the Pack</a>
+</nav>
+
+<section class="hero" id="top">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-brand-lockup reveal">
+        <img class="mark" src="assets/logo-mark.png" alt="PawPack logo mark">
+        <img class="word" src="assets/wordmark.png" alt="PawPack wordmark">
+      </div>
+
+      <h1 class="display reveal">
+        <span class="ln">Born on</span>
+        <span class="ln">the wall.</span>
+        <span class="ln rescued">rescued on</span>
+        <span class="ln rescued">the trail.</span>
+      </h1>
+      <p class="hero-sub reveal">
+        Gear for adventure dogs, built from retired alpine climbing rope. Every leash, collar, treat bag, and bandana carries a material once trusted on the wall — and now built for the miles ahead.
+      </p>
+    </div>
+
+    <div class="hero-visual reveal">
+      <img src="assets/pawpal-7.png" alt="PawPack adventure dog on the trail">
+      <div class="hero-meta">
+        <div class="hero-caption">Trail-tested by dogs who actually go.</div>
+        <div class="hero-counter">
+          <span class="num" id="counter">1,247</span>
+          <span class="cap">meters of rope rescued</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-cue">Scroll</div>
+</section>
+
+<!-- AD VIDEO -->
+<section class="ad-video" id="ad">
+  <div class="ad-video-inner">
+    <div class="ad-video-head">
+      <span class="eyebrow reveal">The Story in Motion</span>
+      <h2 class="reveal">Born on the wall.<br/><em>Rescued on the trail.</em></h2>
+      <p class="reveal">A 26-second look at the rope's second life — from the gym, to the workshop, to the trail.</p>
+    </div>
+    <div class="ad-video-frame reveal">
+      <video
+        src="assets/PawPackAd.mp4"
+        controls
+        playsinline
+        preload="metadata"
+        poster="assets/pawpal-7.png"
+      >
+        Your browser doesn't support embedded video. <a href="assets/PawPackAd.mp4" style="color:var(--rope)">Download the ad here.</a>
+      </video>
+    </div>
+    <div class="ad-video-caption reveal">PawPack · 0:26</div>
+  </div>
+</section>
+
+<section class="difference" id="gear">
+  <div class="difference-inner">
+    <div class="difference-head">
+      <h2 class="display reveal">The PawPack <span class="amp">difference</span></h2>
+      <p class="reveal">One retired climbing rope. A safety-rated material trusted with human lives, given a second purpose on the trail. The provenance isn't a story we tell — it's the object in your hand.</p>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar reveal">
+        <div class="ico">
+          <svg width="42" height="42" viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="21" cy="21" r="18"/>
+            <path d="M10 21 C 10 14, 14 10, 21 10 S 32 14, 32 21"/>
+            <circle cx="21" cy="21" r="3" fill="currentColor"/>
+          </svg>
+        </div>
+        <h3>100% Retired Climbing Rope</h3>
+        <p>Sourced directly from gyms and guide services when rope retires from climbing service — then rebuilt for trail use.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="ico">
+          <svg width="42" height="42" viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M6 21 L 16 31 L 36 11"/>
+          </svg>
+        </div>
+        <h3>Fully Traceable Provenance</h3>
+        <p>Every leash ships with the gym of origin, rope model, and retirement date. Verifiable, not marketed.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="ico">
+          <svg width="42" height="42" viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 6 L 21 36 M 10 17 L 21 6 L 32 17"/>
+            <path d="M10 30 L 32 30" stroke-dasharray="2 3"/>
+          </svg>
+        </div>
+        <h3>Zero Waste Manufacturing</h3>
+        <p>Core becomes the leash. Sheath becomes the collar. Offcuts become bandanas and treat-bag details. Nothing gets wasted.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="ico">
+          <svg width="42" height="42" viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="21" cy="21" r="15"/>
+            <path d="M21 6 L 21 21 L 32 26"/>
+          </svg>
+        </div>
+        <h3>Built for the Actual Trail</h3>
+        <p>Leash lengths, handle leverage, collars, and accessories configured for movement outside — not just the sidewalk loop.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gear-mini" id="trail-pack">
+  <div class="gear-mini-inner">
+    <div class="gear-mini-head">
+      <div>
+        <span class="eyebrow reveal">Beyond the leash</span>
+        <h2 class="display reveal">The rest of the rope family.</h2>
+      </div>
+      <p class="reveal">PawPack starts with the flagship leash, but the full system extends across the rest of the walk: a rope collar, a trail-ready treat bag, and a bandana made from rescued-material offcuts.</p>
+    </div>
+
+    <div class="gear-grid">
+      <div class="gear-card reveal">
+        <div class="gear-img">
+          <img src="assets/ropecollar.png" alt="PawPack rope collar in rainbow color family">
+        </div>
+        <div class="gear-body">
+          <div class="kicker">Extension One</div>
+          <h3>Rope Collar</h3>
+          <p>A durable everyday collar built from reclaimed rope components and paired to the leash by color family, finish, and provenance.</p>
+        </div>
+      </div>
+      <div class="gear-card reveal">
+        <div class="gear-img">
+          <img src="assets/treatbag.png" alt="PawPack treat bag in reclaimed canvas with rope drawstring">
+        </div>
+        <div class="gear-body">
+          <div class="kicker">Extension Two</div>
+          <h3>Treat Bag</h3>
+          <p>A compact trail companion for rewards, recall work, and hikes that go longer than expected. Built from reclaimed material with practical carry in mind.</p>
+        </div>
+      </div>
+      <div class="gear-card reveal">
+        <div class="gear-img">
+          <img src="assets/bandana.png" alt="Adventure dog wearing a PawPack offcut bandana">
+        </div>
+        <div class="gear-body">
+          <div class="kicker">Extension Three</div>
+          <h3>Bandana</h3>
+          <p>Made from offcut textiles and finishing scraps, the bandana gives the rope family one more visible second life — functional, lightweight, and easy to rotate into every pack.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="material" id="story">
+  <div class="material-inner">
+    <div class="material-copy">
+      <span class="eyebrow reveal">The Material</span>
+      <h2 class="display reveal">A rope with a<br/><em class="italic">life already lived.</em></h2>
+      <p class="reveal">Alpine climbing rope is engineered to catch a falling climber — then retired when its climbing life is complete. PawPack gives that rope somewhere to go next through trail gear that still carries the credibility of the material itself.</p>
+      <p class="reveal" style="margin-top:20px">A dog leash asks a fraction of what the wall demanded. The safety rating isn't a claim. It's a floor.</p>
+      <a href="#process" class="cta reveal">
+        Follow the Rope
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 6 H 14 M 9 1 L 14 6 L 9 11"/></svg>
+      </a>
+    </div>
+
+    <div class="material-visual">
+      <img src="assets/pawpal-1.jpg" alt="PawPack dog with rope leash" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+  </div>
+</section>
+
+<section class="pawpals" id="pawpals">
+  <div class="pawpals-inner">
+    <div class="pawpals-head">
+      <div>
+        <span class="eyebrow reveal">PawPals</span>
+        <h2 class="display reveal">Meet the <em>brand ambassadors.</em></h2>
+      </div>
+      <p class="reveal">Our PawPals are the dogs who put PawPack into motion — testing gear on trail, in town, and everywhere between. They help show how retired rope performs in real life, and they carry the story of the brand out into the wild.</p>
+    </div>
+
+    <div class="carousel-shell reveal">
+      <div class="carousel-viewport">
+        <div class="carousel-track" id="pawpalsTrack">
+          <article class="pawpal-card">
+            <div class="pawpal-media">
+              <img src="assets/pawpal-1.jpg" alt="PawPal ambassador dog 1">
+            </div>
+            <div class="pawpal-copy">
+              <div class="tag">PawPal 01</div>
+              <h3>Trail Scout</h3>
+              <p>Always first to the overlook, first to the creek, and first to test whether a leash can keep up.</p>
+            </div>
+          </article>
+
+          <article class="pawpal-card">
+            <div class="pawpal-media">
+              <img src="assets/pawpal-2.png" alt="PawPal ambassador dog 2">
+            </div>
+            <div class="pawpal-copy">
+              <div class="tag">PawPal 02</div>
+              <h3>Canyon Cruiser</h3>
+              <p>Proof that trail-ready gear should look just as good in red rock as it does back at the trailhead.</p>
+            </div>
+          </article>
+
+          <article class="pawpal-card">
+            <div class="pawpal-media">
+              <img src="assets/pawpal-3.png" alt="PawPal ambassador dog 3">
+            </div>
+            <div class="pawpal-copy">
+              <div class="tag">PawPal 03</div>
+              <h3>Storm Walker</h3>
+              <p>Built for weather, rough footing, and the kind of days that turn a normal walk into an actual adventure.</p>
+            </div>
+          </article>
+
+          <article class="pawpal-card">
+            <div class="pawpal-media">
+              <img src="assets/pawpal-4.png" alt="PawPal ambassador dog 4">
+            </div>
+            <div class="pawpal-copy">
+              <div class="tag">PawPal 04</div>
+              <h3>Pack Leader</h3>
+              <p>Shows how PawPack gear works across different dogs, sizes, and daily routines — not just one kind of trail dog.</p>
+            </div>
+          </article>
+
+          <article class="pawpal-card">
+            <div class="pawpal-media">
+              <img src="assets/pawpal-5.png" alt="PawPal ambassador dog 5">
+            </div>
+            <div class="pawpal-copy">
+              <div class="tag">PawPal 05</div>
+              <h3>Woodland Ranger</h3>
+              <p>Ambassador for quiet miles, muddy paws, and gear that earns its keep on the long way around.</p>
+            </div>
+          </article>
+
+          <article class="pawpal-card">
+            <div class="pawpal-media">
+              <img src="assets/pawpal-6.png" alt="PawPal ambassador dog 6">
+            </div>
+            <div class="pawpal-copy">
+              <div class="tag">PawPal 06</div>
+              <h3>City-to-Trail</h3>
+              <p>For the dogs who start on pavement, end on dirt, and need one system that works for both.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="carousel-controls">
+        <div class="carousel-buttons">
+          <button class="carousel-btn" id="pawpalsPrev" aria-label="Previous PawPal">&#8592;</button>
+          <button class="carousel-btn" id="pawpalsNext" aria-label="Next PawPal">&#8594;</button>
+        </div>
+        <div class="carousel-status" id="pawpalsStatus">01 / 06</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="process-inner">
+    <div class="process-head">
+      <span class="eyebrow reveal">The Journey</span>
+      <h2 class="display reveal" style="margin-top:18px">From the wall<br/><em>to the trail.</em></h2>
+      <p class="reveal">Six steps. One rope. Nothing wasted.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-img" style="background:linear-gradient(135deg,#1E3A5F 0%,#142A45 100%);display:flex;align-items:flex-end;padding:20px;color:#C9A96A;font-family:Fraunces,serif;font-style:italic;font-size:18px">Gym Partnership</div>
+        <span class="step-num" style="position:static;color:var(--rust)">01.</span>
+        <h3>Sourcing</h3>
+        <p>Partner gyms and guide services hand off retired rope that has completed its climbing life. We verify spec, origin, and retirement date.</p>
+      </div>
+
+      <div class="step reveal">
+        <div class="step-img" style="background:linear-gradient(135deg,#142A45 0%,#0E1E33 100%);display:flex;align-items:flex-end;padding:20px;color:#C9A96A;font-family:Fraunces,serif;font-style:italic;font-size:18px">Inspection</div>
+        <span class="step-num" style="position:static;color:var(--rust)">02.</span>
+        <h3>Intake</h3>
+        <p>Each rope is logged, photographed, and tagged with its provenance card. The gym, the spec, the date — all travel with the rope.</p>
+      </div>
+
+      <div class="step reveal">
+        <div class="step-img" style="background:linear-gradient(135deg,#1E3A5F 0%,#2E5689 100%);display:flex;align-items:flex-end;padding:20px;color:#EDEAD8;font-family:Fraunces,serif;font-style:italic;font-size:18px">Separation</div>
+        <span class="step-num" style="position:static;color:var(--rust)">03.</span>
+        <h3>Sheath &amp; Core</h3>
+        <p>Sheath is stripped from core. Core becomes the leash. Sheath is cut into collar components. Offcuts are saved for bandanas and trail accessories.</p>
+      </div>
+
+      <div class="step reveal">
+        <div class="step-img" style="background:linear-gradient(135deg,#B4593A 0%,#1E3A5F 100%);display:flex;align-items:flex-end;padding:20px;color:#EDEAD8;font-family:Fraunces,serif;font-style:italic;font-size:18px">Richmond, VA</div>
+        <span class="step-num" style="position:static;color:var(--rust)">04.</span>
+        <h3>Cutting</h3>
+        <p>Rope is cut to trail-ready lengths in our Richmond workshop. Ends are heat-finished to prevent fraying. No filler, no throwaway trim.</p>
+      </div>
+
+      <div class="step reveal">
+        <div class="step-img" style="background:linear-gradient(135deg,#0E1E33 0%,#1E3A5F 100%);display:flex;align-items:flex-end;padding:20px;color:#C9A96A;font-family:Fraunces,serif;font-style:italic;font-size:18px">Hand Assembly</div>
+        <span class="step-num" style="position:static;color:var(--rust)">05.</span>
+        <h3>Assembly</h3>
+        <p>Hardware attached by hand. Each unit is inspected, tagged with provenance, and paired to the rest of the rope family.</p>
+      </div>
+
+      <div class="step reveal">
+        <div class="step-img" style="background:linear-gradient(135deg,#C9A96A 0%,#1E3A5F 100%);display:flex;align-items:flex-end;padding:20px;color:#EDEAD8;font-family:Fraunces,serif;font-style:italic;font-size:18px">Trail-Ready</div>
+        <span class="step-num" style="position:static;color:var(--rust)">06.</span>
+        <h3>To Your Door</h3>
+        <p>Shipped in a compostable box with a handwritten note and the story of the rope’s first life — ready for its second.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats" id="trail">
+  <div class="stats-inner">
+    <div class="stats-head">
+      <span class="eyebrow reveal">Our pack, at a glance</span>
+      <h2 class="display reveal">By the <em class="italic" style="color:var(--rope);font-weight:500">numbers.</em></h2>
+    </div>
+    <div class="stats-grid">
+      <div class="stat reveal">
+        <div class="big">1,247<sup>m</sup></div>
+        <div class="unit">Rope rescued</div>
+        <p>Retired climbing rope diverted from landfill since our founding pilot run.</p>
+      </div>
+      <div class="stat reveal">
+        <div class="big">12</div>
+        <div class="unit">Gym partners</div>
+        <p>Active climbing gyms and guide services across the Mid-Atlantic and Mountain West.</p>
+      </div>
+      <div class="stat reveal">
+        <div class="big">0<sup>%</sup></div>
+        <div class="unit">Waste to landfill</div>
+        <p>Core, sheath, and offcuts all become product-family components across leash, collar, treat bag, and bandana.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="personas">
+  <div class="personas-inner">
+    <div class="personas-head">
+      <h2 class="display reveal">Built for the dogs<br/>who <em class="italic">actually</em> go.</h2>
+      <p class="reveal">PawPack is made for three kinds of trail partner — each one recognizing something true about the rope the moment they hold it.</p>
+    </div>
+
+    <div class="persona-grid">
+      <div class="persona reveal">
+        <span class="tag">01 / CREDIBILITY</span>
+        <span class="num">Persona one</span>
+        <h3>Trail Maven<br/>Maya</h3>
+        <div class="role">Climber · Guide · Long miler</div>
+        <p class="quote">"I want to know what my gear was rated for. If you can't tell me the spec, I'm not interested."</p>
+      </div>
+      <div class="persona reveal">
+        <span class="tag">02 / SIGNAL</span>
+        <span class="num">Persona two</span>
+        <h3>Conscious<br/>Connor</h3>
+        <div class="role">Weekend hiker · Values-driven</div>
+        <p class="quote">"I'm tired of sustainability being a hang tag. Show me the material, not the certification."</p>
+      </div>
+      <div class="persona reveal">
+        <span class="tag">03 / SCALE</span>
+        <span class="num">Persona three</span>
+        <h3>Adventure Ally<br/>Ava</h3>
+        <div class="role">Trailhead regular · First-time owner</div>
+        <p class="quote">"My dog deserves gear with a story. And I want to be the one who tells it at the trailhead."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="faq-inner">
+    <div class="faq-head">
+      <span class="eyebrow reveal">Questions</span>
+      <h2 class="display reveal" style="margin-top:20px">Ask the <em>knot.</em></h2>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">Is the rope safe for my dog? <span class="plus"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Retired alpine climbing rope is massively overbuilt for the loads of everyday dog walking and trail use. We source only rope that has completed its climbing life, then inspect, rework, and rebuild it for its second life off the wall.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Where does the rope come from? <span class="plus"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Directly from partner climbing gyms and guide services. Every leash ships with the gym of origin, rope model, and retirement date on the hang tag. That provenance is core to the brand.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What does "zero waste" actually mean here? <span class="plus"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">We design around full-material use. The leash leads the product family, then the rest of the rope is reworked into companion items like collars, treat bags, bandanas, and accessory details instead of being discarded.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What does a PawPack subscription include? <span class="plus"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">The Trail Pack ships every 2 months and includes seasonal trail treats, a consumable, and a rotating gear or accessory drop tied back to the same PawPack material story.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Can I buy just the leash? <span class="plus"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. The Trail Leash is available as a standalone item, while the rope collar, treat bag, and bandana round out the rest of the rope family for customers who want the full system.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="next" id="subscribe">
+  <div class="next-inner">
+    <div class="next-copy">
+      <span class="eyebrow">Next Up</span>
+      <h2 class="display">Claim your<br/><em class="italic" style="color:var(--rope);font-weight:500">founding spot.</em></h2>
+      <p>The first 100 Trail Pack subscribers get locked-in founding member pricing, early access to new rope drops, and a handwritten note from the rope's origin gym.</p>
+      <a href="#" class="next-cta">Reserve a Trail Pack →</a>
+    </div>
+    <div class="next-visual">
+      <img src="assets/pawpal-6.png" alt="PawPack dog outdoors" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img src="assets/wordmark.png" alt="PawPack" />
+        <p>Gear for adventure dogs, made from retired alpine climbing rope. Designed in Richmond, Virginia. Sourced from climbing gyms across North America.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#">Trail Leash</a></li>
+          <li><a href="#">Rope Collar</a></li>
+          <li><a href="#">Treat Bag</a></li>
+          <li><a href="#">Bandana</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Story</h4>
+        <ul>
+          <li><a href="#">Our Rope</a></li>
+          <li><a href="#">Gym Partners</a></li>
+          <li><a href="#">How It's Made</a></li>
+          <li><a href="#">PawPals</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Sizing</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Care Guide</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Follow</h4>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">TikTok</a></li>
+          <li><a href="#">Strava Club</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© 2026 PawPack. Designed in Richmond, VA.</div>
+      <div class="tag-line">Born on the wall. Rescued on the trail.</div>
+      <div><a href="#">Privacy</a> · <a href="#">Terms</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    })
+  },{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  document.querySelectorAll('.faq-q').forEach(q=>{
+    q.addEventListener('click',()=>{
+      const item = q.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+      if(!wasOpen) item.classList.add('open');
+    });
+  });
+
+  const counter = document.getElementById('counter');
+  const target = 1247;
+  let start = null;
+  const dur = 1800;
+  function tick(ts){
+    if(!start) start = ts;
+    const p = Math.min((ts-start)/dur, 1);
+    const eased = 1 - Math.pow(1-p, 3);
+    counter.textContent = Math.floor(eased*target).toLocaleString();
+    if(p<1) requestAnimationFrame(tick);
+  }
+  setTimeout(()=>requestAnimationFrame(tick), 400);
+
+  const track = document.getElementById('pawpalsTrack');
+  const prevBtn = document.getElementById('pawpalsPrev');
+  const nextBtn = document.getElementById('pawpalsNext');
+  const status = document.getElementById('pawpalsStatus');
+  const cards = Array.from(track.children);
+
+  let visible = window.innerWidth <= 680 ? 1 : window.innerWidth <= 1000 ? 2 : 3;
+  let index = 0;
+
+  function maxIndex(){
+    return Math.max(0, cards.length - visible);
+  }
+
+  function updateCarousel(){
+    visible = window.innerWidth <= 680 ? 1 : window.innerWidth <= 1000 ? 2 : 3;
+    if(index > maxIndex()) index = maxIndex();
+
+    const cardWidth = cards[0].getBoundingClientRect().width;
+    track.style.transform = `translateX(-\${index * cardWidth}px)`;
+
+    const current = Math.min(index + 1, cards.length);
+    const total = cards.length;
+    status.textContent = `\${String(current).padStart(2,'0')} / \${String(total).padStart(2,'0')}`;
+  }
+
+  nextBtn.addEventListener('click', ()=>{
+    if(index < maxIndex()) index++;
+    else index = 0;
+    updateCarousel();
+  });
+
+  prevBtn.addEventListener('click', ()=>{
+    if(index > 0) index--;
+    else index = maxIndex();
+    updateCarousel();
+  });
+
+  window.addEventListener('resize', updateCarousel);
+  window.addEventListener('load', updateCarousel);
+</script>
+
+</body>
+</html>
